@@ -1,0 +1,19 @@
+{
+	"name": "ds_bulk_csv",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_blob_adls",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileSystem": "outputmultiplefiles"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}
