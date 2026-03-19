@@ -1,0 +1,16 @@
+{
+	"name": "DS_SQL",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SqlServer6",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "@dataset().schemaname",
+			"table": "@dataset().tablename"
+		}
+	}
+}
