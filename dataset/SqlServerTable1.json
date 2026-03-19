@@ -9,22 +9,18 @@
 		"type": "SqlServerTable",
 		"schema": [
 			{
-				"name": "productid",
-				"type": "nvarchar"
+				"name": "SIC_Code",
+				"type": "bigint",
+				"precision": 19
 			},
 			{
-				"name": "productname",
-				"type": "nvarchar"
-			},
-			{
-				"name": "listprice",
-				"type": "float",
-				"precision": 15
+				"name": "Description",
+				"type": "varchar"
 			}
 		],
 		"typeProperties": {
 			"schema": "dbo",
-			"table": "au_products"
+			"table": "industry_sic"
 		}
 	}
 }
