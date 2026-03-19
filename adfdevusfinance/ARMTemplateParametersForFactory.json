@@ -50,8 +50,11 @@
 		"SqlServer5_password": {
 			"value": ""
 		},
+		"SqlServer6_password": {
+			"value": ""
+		},
 		"AzureDataLakeStorage1_properties_typeProperties_url": {
-			"value": "https://adlsdevusfinance011.dfs.core.windows.net"
+			"value": "https://adlsdevusfinance011.dfs.core.windows.net/"
 		},
 		"AzureDataLakeStorage2_properties_typeProperties_url": {
 			"value": "https://adlsdevusfinance011.dfs.core.windows.net/"
@@ -120,6 +123,15 @@
 			"value": "Adventureworks"
 		},
 		"SqlServer5_properties_typeProperties_userName": {
+			"value": "sa"
+		},
+		"SqlServer6_properties_typeProperties_server": {
+			"value": "LAPTOP-EGV8I2D2"
+		},
+		"SqlServer6_properties_typeProperties_database": {
+			"value": "Adventureworks"
+		},
+		"SqlServer6_properties_typeProperties_userName": {
 			"value": "sa"
 		}
 	}

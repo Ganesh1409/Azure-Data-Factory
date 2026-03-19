@@ -67,9 +67,13 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'SqlServer5'"
 		},
+		"SqlServer6_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'SqlServer6'"
+		},
 		"AzureDataLakeStorage1_properties_typeProperties_url": {
 			"type": "string",
-			"defaultValue": "https://adlsdevusfinance011.dfs.core.windows.net"
+			"defaultValue": "https://adlsdevusfinance011.dfs.core.windows.net/"
 		},
 		"AzureDataLakeStorage2_properties_typeProperties_url": {
 			"type": "string",
@@ -163,6 +167,18 @@
 			"type": "string",
 			"defaultValue": "sa"
 		},
+		"SqlServer6_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "LAPTOP-EGV8I2D2"
+		},
+		"SqlServer6_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "Adventureworks"
+		},
+		"SqlServer6_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "sa"
+		},
 		"containerUri": {
 			"type": "string",
 			"metadata": "URI to storage account containing linked ARM templates"
@@ -193,9 +209,6 @@
 					"AzureBlobStorage1_connectionString": {
 						"value": "[parameters('AzureBlobStorage1_connectionString')]"
 					},
-					"AzureDataLakeStorage1_accountKey": {
-						"value": "[parameters('AzureDataLakeStorage1_accountKey')]"
-					},
 					"AzureDataLakeStorage2_accountKey": {
 						"value": "[parameters('AzureDataLakeStorage2_accountKey')]"
 					},
@@ -214,6 +227,9 @@
 					"LS_bulkcsv_blob_connectionString": {
 						"value": "[parameters('LS_bulkcsv_blob_connectionString')]"
 					},
+					"AzureDataLakeStorage1_accountKey": {
+						"value": "[parameters('AzureDataLakeStorage1_accountKey')]"
+					},
 					"AzureDataLakeStorage3_accountKey": {
 						"value": "[parameters('AzureDataLakeStorage3_accountKey')]"
 					},
@@ -223,8 +239,11 @@
 					"SqlServer1_password": {
 						"value": "[parameters('SqlServer1_password')]"
 					},
-					"AzureDataLakeStorage1_properties_typeProperties_url": {
-						"value": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]"
+					"SqlServer2_password": {
+						"value": "[parameters('SqlServer2_password')]"
+					},
+					"SqlServer3_password": {
+						"value": "[parameters('SqlServer3_password')]"
 					},
 					"AzureDataLakeStorage2_properties_typeProperties_url": {
 						"value": "[parameters('AzureDataLakeStorage2_properties_typeProperties_url')]"
@@ -237,6 +256,9 @@
 					},
 					"LS_blob_adls_properties_typeProperties_url": {
 						"value": "[parameters('LS_blob_adls_properties_typeProperties_url')]"
+					},
+					"AzureDataLakeStorage1_properties_typeProperties_url": {
+						"value": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]"
 					},
 					"AzureDataLakeStorage3_properties_typeProperties_url": {
 						"value": "[parameters('AzureDataLakeStorage3_properties_typeProperties_url')]"
@@ -258,6 +280,24 @@
 					},
 					"SqlServer1_properties_typeProperties_userName": {
 						"value": "[parameters('SqlServer1_properties_typeProperties_userName')]"
+					},
+					"SqlServer2_properties_typeProperties_server": {
+						"value": "[parameters('SqlServer2_properties_typeProperties_server')]"
+					},
+					"SqlServer2_properties_typeProperties_database": {
+						"value": "[parameters('SqlServer2_properties_typeProperties_database')]"
+					},
+					"SqlServer2_properties_typeProperties_userName": {
+						"value": "[parameters('SqlServer2_properties_typeProperties_userName')]"
+					},
+					"SqlServer3_properties_typeProperties_server": {
+						"value": "[parameters('SqlServer3_properties_typeProperties_server')]"
+					},
+					"SqlServer3_properties_typeProperties_database": {
+						"value": "[parameters('SqlServer3_properties_typeProperties_database')]"
+					},
+					"SqlServer3_properties_typeProperties_userName": {
+						"value": "[parameters('SqlServer3_properties_typeProperties_userName')]"
 					}
 				}
 			},
@@ -277,35 +317,14 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
-					"SqlServer2_password": {
-						"value": "[parameters('SqlServer2_password')]"
-					},
-					"SqlServer3_password": {
-						"value": "[parameters('SqlServer3_password')]"
-					},
 					"SqlServer4_password": {
 						"value": "[parameters('SqlServer4_password')]"
 					},
 					"SqlServer5_password": {
 						"value": "[parameters('SqlServer5_password')]"
 					},
-					"SqlServer2_properties_typeProperties_server": {
-						"value": "[parameters('SqlServer2_properties_typeProperties_server')]"
-					},
-					"SqlServer2_properties_typeProperties_database": {
-						"value": "[parameters('SqlServer2_properties_typeProperties_database')]"
-					},
-					"SqlServer2_properties_typeProperties_userName": {
-						"value": "[parameters('SqlServer2_properties_typeProperties_userName')]"
-					},
-					"SqlServer3_properties_typeProperties_server": {
-						"value": "[parameters('SqlServer3_properties_typeProperties_server')]"
-					},
-					"SqlServer3_properties_typeProperties_database": {
-						"value": "[parameters('SqlServer3_properties_typeProperties_database')]"
-					},
-					"SqlServer3_properties_typeProperties_userName": {
-						"value": "[parameters('SqlServer3_properties_typeProperties_userName')]"
+					"SqlServer6_password": {
+						"value": "[parameters('SqlServer6_password')]"
 					},
 					"SqlServer4_properties_typeProperties_server": {
 						"value": "[parameters('SqlServer4_properties_typeProperties_server')]"
@@ -324,6 +343,15 @@
 					},
 					"SqlServer5_properties_typeProperties_userName": {
 						"value": "[parameters('SqlServer5_properties_typeProperties_userName')]"
+					},
+					"SqlServer6_properties_typeProperties_server": {
+						"value": "[parameters('SqlServer6_properties_typeProperties_server')]"
+					},
+					"SqlServer6_properties_typeProperties_database": {
+						"value": "[parameters('SqlServer6_properties_typeProperties_database')]"
+					},
+					"SqlServer6_properties_typeProperties_userName": {
+						"value": "[parameters('SqlServer6_properties_typeProperties_userName')]"
 					}
 				}
 			},
