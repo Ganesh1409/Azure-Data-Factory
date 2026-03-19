@@ -1,0 +1,30 @@
+{
+	"name": "SqlServerTable1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SqlServer3",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "productid",
+				"type": "nvarchar"
+			},
+			{
+				"name": "productname",
+				"type": "nvarchar"
+			},
+			{
+				"name": "listprice",
+				"type": "float",
+				"precision": 15
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "au_products"
+		}
+	}
+}
