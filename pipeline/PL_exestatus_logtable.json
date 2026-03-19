@@ -3,96 +3,6 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "copy_data_sql_csv",
-				"type": "Copy",
-				"dependsOn": [],
-				"policy": {
-					"timeout": "0.12:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"source": {
-						"type": "SqlServerSource",
-						"queryTimeout": "02:00:00",
-						"partitionOption": "None"
-					},
-					"sink": {
-						"type": "DelimitedTextSink",
-						"storeSettings": {
-							"type": "AzureBlobFSWriteSettings"
-						},
-						"formatSettings": {
-							"type": "DelimitedTextWriteSettings",
-							"quoteAllText": true,
-							"fileExtension": ".csv"
-						}
-					},
-					"enableStaging": false,
-					"translator": {
-						"type": "TabularTranslator",
-						"mappings": [
-							{
-								"source": {
-									"name": "productid",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "productid",
-									"type": "String",
-									"physicalType": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "productname",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "productname",
-									"type": "String",
-									"physicalType": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "listprice",
-									"type": "Double",
-									"physicalType": "float"
-								},
-								"sink": {
-									"name": "listprice",
-									"type": "String",
-									"physicalType": "String"
-								}
-							}
-						],
-						"typeConversion": true,
-						"typeConversionSettings": {
-							"allowDataTruncation": true,
-							"treatBooleanAsNumber": false
-						}
-					}
-				},
-				"inputs": [
-					{
-						"referenceName": "SqlServerTable1",
-						"type": "DatasetReference"
-					}
-				],
-				"outputs": [
-					{
-						"referenceName": "DS_sql_adls_csv",
-						"type": "DatasetReference"
-					}
-				]
-			},
-			{
 				"name": "usp_audit_successlog",
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
@@ -137,7 +47,7 @@
 							"type": "String"
 						},
 						"TableName": {
-							"value": null,
+							"value": "@concat(pipeline().parameters.schemaname,'_',pipeline().parameters.tablename)\n",
 							"type": "String"
 						}
 					}
@@ -177,7 +87,10 @@
 							"type": "String"
 						},
 						"errorid": {
-							"value": "@activity('copy_data_sql_csv').output.errors[0].code\n",
+							"value": {
+								"value": "@activity('copy_data_sql_csv').output.errors[0].code\n",
+								"type": "Expression"
+							},
 							"type": "String"
 						},
 						"errormessage": {
@@ -188,11 +101,17 @@
 							"type": "String"
 						},
 						"loadstatus": {
-							"value": "@activity('copy_data_sql_csv').output.executionDetails[0].status\n",
+							"value": {
+								"value": "@activity('copy_data_sql_csv').output.executionDetails[0].status\n",
+								"type": "Expression"
+							},
 							"type": "String"
 						},
 						"TableName": {
-							"value": "@concat(pipeline().parameters.schemaname,'_',pipeline().parameters.tablename)\n",
+							"value": {
+								"value": "@concat(pipeline().parameters.schemaname,'_',pipeline().parameters.tablename)\n",
+								"type": "Expression"
+							},
 							"type": "String"
 						}
 					}
@@ -201,8 +120,70 @@
 					"referenceName": "SqlServer5",
 					"type": "LinkedServiceReference"
 				}
+			},
+			{
+				"name": "copy_data_sql_csv",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".csv"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SqlServerTable2",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DelimitedText1",
+						"type": "DatasetReference"
+					}
+				]
 			}
 		],
+		"parameters": {
+			"schemaname": {
+				"type": "string",
+				"defaultValue": "dbo"
+			},
+			"tablename": {
+				"type": "string",
+				"defaultValue": "au_products"
+			}
+		},
 		"annotations": []
 	}
 }
