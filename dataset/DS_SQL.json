@@ -6,9 +6,6 @@
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
-			"schemaname": {
-				"type": "string"
-			},
 			"tablename": {
 				"type": "string"
 			}
@@ -17,7 +14,6 @@
 		"type": "SqlServerTable",
 		"schema": [],
 		"typeProperties": {
-			"schema": "@dataset().schemaname",
 			"table": "@dataset().tablename"
 		}
 	}
