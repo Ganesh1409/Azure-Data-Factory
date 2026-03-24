@@ -1,0 +1,33 @@
+{
+	"name": "Parquet1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_ADLS_PARQUET",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "*.parquet",
+				"fileSystem": "outputmultiplefiles"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": [
+			{
+				"name": "productid",
+				"type": "UTF8"
+			},
+			{
+				"name": "productname",
+				"type": "UTF8"
+			},
+			{
+				"name": "listprice",
+				"type": "UTF8"
+			}
+		]
+	}
+}
