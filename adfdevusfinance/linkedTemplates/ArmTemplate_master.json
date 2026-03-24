@@ -27,6 +27,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage4'"
 		},
+		"AzureDataLakeStorage5_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage5'"
+		},
 		"LS_ADLS_PARQUET_accountKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'LS_ADLS_PARQUET'"
@@ -71,6 +75,18 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'SqlServer6'"
 		},
+		"adlsgen011_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'adlsgen011'"
+		},
+		"linkedService1_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'linkedService1'"
+		},
+		"sqlserver_masterdb_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'sqlserver_masterdb'"
+		},
 		"AzureDataLakeStorage1_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://adlsdevusfinance011.dfs.core.windows.net/"
@@ -84,6 +100,10 @@
 			"defaultValue": "https://adlsdevusfinance011.dfs.core.windows.net/"
 		},
 		"AzureDataLakeStorage4_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevusfinance011.dfs.core.windows.net/"
+		},
+		"AzureDataLakeStorage5_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://adlsdevusfinance011.dfs.core.windows.net/"
 		},
@@ -179,6 +199,22 @@
 			"type": "string",
 			"defaultValue": "sa"
 		},
+		"linkedService1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevusfinance011.dfs.core.windows.net/"
+		},
+		"sqlserver_masterdb_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "LAPTOP-EGV8I2D2"
+		},
+		"sqlserver_masterdb_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "master"
+		},
+		"sqlserver_masterdb_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "sa"
+		},
 		"containerUri": {
 			"type": "string",
 			"metadata": "URI to storage account containing linked ARM templates"
@@ -215,6 +251,9 @@
 					"AzureDataLakeStorage4_accountKey": {
 						"value": "[parameters('AzureDataLakeStorage4_accountKey')]"
 					},
+					"AzureDataLakeStorage5_accountKey": {
+						"value": "[parameters('AzureDataLakeStorage5_accountKey')]"
+					},
 					"LS_ADLS_PARQUET_accountKey": {
 						"value": "[parameters('LS_ADLS_PARQUET_accountKey')]"
 					},
@@ -227,11 +266,59 @@
 					"LS_bulkcsv_blob_connectionString": {
 						"value": "[parameters('LS_bulkcsv_blob_connectionString')]"
 					},
+					"adlsgen011_connectionString": {
+						"value": "[parameters('adlsgen011_connectionString')]"
+					},
+					"linkedService1_accountKey": {
+						"value": "[parameters('linkedService1_accountKey')]"
+					},
 					"AzureDataLakeStorage1_accountKey": {
 						"value": "[parameters('AzureDataLakeStorage1_accountKey')]"
 					},
 					"AzureDataLakeStorage3_accountKey": {
 						"value": "[parameters('AzureDataLakeStorage3_accountKey')]"
+					},
+					"AzureDataLakeStorage2_properties_typeProperties_url": {
+						"value": "[parameters('AzureDataLakeStorage2_properties_typeProperties_url')]"
+					},
+					"AzureDataLakeStorage4_properties_typeProperties_url": {
+						"value": "[parameters('AzureDataLakeStorage4_properties_typeProperties_url')]"
+					},
+					"AzureDataLakeStorage5_properties_typeProperties_url": {
+						"value": "[parameters('AzureDataLakeStorage5_properties_typeProperties_url')]"
+					},
+					"LS_ADLS_PARQUET_properties_typeProperties_url": {
+						"value": "[parameters('LS_ADLS_PARQUET_properties_typeProperties_url')]"
+					},
+					"LS_blob_adls_properties_typeProperties_url": {
+						"value": "[parameters('LS_blob_adls_properties_typeProperties_url')]"
+					},
+					"linkedService1_properties_typeProperties_url": {
+						"value": "[parameters('linkedService1_properties_typeProperties_url')]"
+					},
+					"AzureDataLakeStorage1_properties_typeProperties_url": {
+						"value": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]"
+					},
+					"AzureDataLakeStorage3_properties_typeProperties_url": {
+						"value": "[parameters('AzureDataLakeStorage3_properties_typeProperties_url')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "adfdevusfinance_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
 					},
 					"LS_sql_adls_password": {
 						"value": "[parameters('LS_sql_adls_password')]"
@@ -245,23 +332,17 @@
 					"SqlServer3_password": {
 						"value": "[parameters('SqlServer3_password')]"
 					},
-					"AzureDataLakeStorage2_properties_typeProperties_url": {
-						"value": "[parameters('AzureDataLakeStorage2_properties_typeProperties_url')]"
+					"SqlServer4_password": {
+						"value": "[parameters('SqlServer4_password')]"
 					},
-					"AzureDataLakeStorage4_properties_typeProperties_url": {
-						"value": "[parameters('AzureDataLakeStorage4_properties_typeProperties_url')]"
+					"SqlServer5_password": {
+						"value": "[parameters('SqlServer5_password')]"
 					},
-					"LS_ADLS_PARQUET_properties_typeProperties_url": {
-						"value": "[parameters('LS_ADLS_PARQUET_properties_typeProperties_url')]"
+					"SqlServer6_password": {
+						"value": "[parameters('SqlServer6_password')]"
 					},
-					"LS_blob_adls_properties_typeProperties_url": {
-						"value": "[parameters('LS_blob_adls_properties_typeProperties_url')]"
-					},
-					"AzureDataLakeStorage1_properties_typeProperties_url": {
-						"value": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]"
-					},
-					"AzureDataLakeStorage3_properties_typeProperties_url": {
-						"value": "[parameters('AzureDataLakeStorage3_properties_typeProperties_url')]"
+					"sqlserver_masterdb_password": {
+						"value": "[parameters('sqlserver_masterdb_password')]"
 					},
 					"LS_sql_adls_properties_typeProperties_server": {
 						"value": "[parameters('LS_sql_adls_properties_typeProperties_server')]"
@@ -298,33 +379,6 @@
 					},
 					"SqlServer3_properties_typeProperties_userName": {
 						"value": "[parameters('SqlServer3_properties_typeProperties_userName')]"
-					}
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "adfdevusfinance_ArmTemplate_1",
-			"type": "Microsoft.Resources/deployments",
-			"apiVersion": "2024-03-01",
-			"properties": {
-				"mode": "incremental",
-				"templateLink": {
-					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
-					"contentVersion": "1.0.0.0"
-				},
-				"parameters": {
-					"factoryName": {
-						"value": "[parameters('factoryName')]"
-					},
-					"SqlServer4_password": {
-						"value": "[parameters('SqlServer4_password')]"
-					},
-					"SqlServer5_password": {
-						"value": "[parameters('SqlServer5_password')]"
-					},
-					"SqlServer6_password": {
-						"value": "[parameters('SqlServer6_password')]"
 					},
 					"SqlServer4_properties_typeProperties_server": {
 						"value": "[parameters('SqlServer4_properties_typeProperties_server')]"
@@ -352,11 +406,40 @@
 					},
 					"SqlServer6_properties_typeProperties_userName": {
 						"value": "[parameters('SqlServer6_properties_typeProperties_userName')]"
+					},
+					"sqlserver_masterdb_properties_typeProperties_server": {
+						"value": "[parameters('sqlserver_masterdb_properties_typeProperties_server')]"
+					},
+					"sqlserver_masterdb_properties_typeProperties_database": {
+						"value": "[parameters('sqlserver_masterdb_properties_typeProperties_database')]"
+					},
+					"sqlserver_masterdb_properties_typeProperties_userName": {
+						"value": "[parameters('sqlserver_masterdb_properties_typeProperties_userName')]"
 					}
 				}
 			},
 			"dependsOn": [
 				"[resourceId('Microsoft.Resources/deployments', 'adfdevusfinance_ArmTemplate_0')]"
+			]
+		},
+		{
+			"name": "adfdevusfinance_ArmTemplate_2",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_2.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'adfdevusfinance_ArmTemplate_1')]"
 			]
 		}
 	]

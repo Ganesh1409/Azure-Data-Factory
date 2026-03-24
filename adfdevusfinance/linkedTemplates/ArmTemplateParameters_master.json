@@ -20,6 +20,9 @@
 		"AzureDataLakeStorage4_accountKey": {
 			"value": ""
 		},
+		"AzureDataLakeStorage5_accountKey": {
+			"value": ""
+		},
 		"LS_ADLS_PARQUET_accountKey": {
 			"value": ""
 		},
@@ -53,6 +56,15 @@
 		"SqlServer6_password": {
 			"value": ""
 		},
+		"adlsgen011_connectionString": {
+			"value": ""
+		},
+		"linkedService1_accountKey": {
+			"value": ""
+		},
+		"sqlserver_masterdb_password": {
+			"value": ""
+		},
 		"AzureDataLakeStorage1_properties_typeProperties_url": {
 			"value": "https://adlsdevusfinance011.dfs.core.windows.net/"
 		},
@@ -63,6 +75,9 @@
 			"value": "https://adlsdevusfinance011.dfs.core.windows.net/"
 		},
 		"AzureDataLakeStorage4_properties_typeProperties_url": {
+			"value": "https://adlsdevusfinance011.dfs.core.windows.net/"
+		},
+		"AzureDataLakeStorage5_properties_typeProperties_url": {
 			"value": "https://adlsdevusfinance011.dfs.core.windows.net/"
 		},
 		"LS_ADLS_PARQUET_properties_typeProperties_url": {
@@ -132,6 +147,18 @@
 			"value": "Adventureworks"
 		},
 		"SqlServer6_properties_typeProperties_userName": {
+			"value": "sa"
+		},
+		"linkedService1_properties_typeProperties_url": {
+			"value": "https://adlsdevusfinance011.dfs.core.windows.net/"
+		},
+		"sqlserver_masterdb_properties_typeProperties_server": {
+			"value": "LAPTOP-EGV8I2D2"
+		},
+		"sqlserver_masterdb_properties_typeProperties_database": {
+			"value": "master"
+		},
+		"sqlserver_masterdb_properties_typeProperties_userName": {
 			"value": "sa"
 		},
 		"containerUri": {
